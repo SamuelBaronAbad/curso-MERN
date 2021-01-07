@@ -1,18 +1,31 @@
-import { DatePicker } from 'antd';
-import './App.scss';
+import React from "react";
+import "./App.scss"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./config/routes";
+
 
 function App() {
 
-  const test = (date, dateString) => {
-    console.log(date, dateString);
-  }
   return (
-    <div className="app">
-      <h1>Web personal - Client <span>Samuel</span></h1>
-      <DatePicker onChange={test}/>
-      <h2>Proyecto</h2>
-    </div>
+   <Router>
+     <Switch>
+     {routes.map((route, index) => (
+       <RouterWithSubRoutes key={index} {...route} />
+     ))}
+     </Switch>
+   </Router>
+  );
+}
 
+// Renderizar rutas Padres e hij@s
+function RouterWithSubRoutes (route){
+
+  return (
+    <Route 
+    path={route.path}
+    exact={route.exact}
+    render={props => <route.component routes={route.routes} {...props} />}
+    />
   );
 }
 
