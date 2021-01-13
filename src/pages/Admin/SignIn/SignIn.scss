@@ -51,17 +51,14 @@
                     font-size: 0em + 23px / $defaultFontSize;
                 }
                 &:hover {
-                    color: $font-grey-dark;
+                    color: $primary-color-hover;
                 }
                 &:before {
                     content: none;
                 }
-                /*span {
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }*/
+                span {
+                  color: $primary-color;
+                }
             }
 
             .ant-tabs-tab-active {
