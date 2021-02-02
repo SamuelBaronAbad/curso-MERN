@@ -39,7 +39,7 @@
             }
             .ant-tabs-tab {
                 display: inline;
-                width: 50%;
+                width: 100%;
                 height: 60px !important;
                 text-align: center;
                 font-size: 0em + 19px / $defaultFontSize;
@@ -47,7 +47,7 @@
                 border-radius: 0px !important;
                 margin: 0 !important;
                 @media (min-width: $media-breakpoint-up-lg) {
-                    width: 220px;
+                    width: 288px;
                     font-size: 0em + 23px / $defaultFontSize;
                 }
                 &:hover {
