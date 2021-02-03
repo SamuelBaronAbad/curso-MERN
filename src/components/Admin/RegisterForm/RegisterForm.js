@@ -66,8 +66,6 @@ export default function RegisterForm() {
 
     //async: decimos que la funcion es de tipo asincrona
     const register = async e => {
-        const { email, password, repeatPassword, privacyPolicy } = formValid;
-
         const emailVal = input.email;
         const passwordVal = input.password;
         const repeatPasswordVal = input.repeatPassword;
@@ -129,7 +127,7 @@ export default function RegisterForm() {
     const { Item } = Form;
     return (
         <Form className="register-form" onChange={changeForm}>
-            
+
             <Item>
                 <Input
                     prefix={<Mail></Mail>}
