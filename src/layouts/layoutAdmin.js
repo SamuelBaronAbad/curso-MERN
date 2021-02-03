@@ -15,18 +15,17 @@ export default function LayoutAdmin(props) {
     const { routes } = props;
     const [menuCollapsed, setMenuCollapsed] = useState(false);
     const { Header, Content, Footer } = Layout;
-    // Comprueba que nos devuelve
-    console.log(useAuth());
+    /* Comprueba que nos devuelve useAuth*/
+    console.log(useAuth()); 
 
     const {user, isLoading} = useAuth();
-
-    
 
     const token = getAccessTokenApi();
     const refToken = getRefreshTokenApi();
    
-    console.log(token);
-    console.log(refToken);
+   /*  console.log(token);
+    console.log(refToken); */
+
     if (!user) {
         return (
             <>
