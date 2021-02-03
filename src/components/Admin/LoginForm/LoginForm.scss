@@ -1,38 +1,22 @@
 @import "../../../scss/variables";
 
-.register-form {
-    text-align: left;
-
-    .ant-form-item {
-       
-        &:nth-child(3),
-        &:last-of-type {
-            margin: 0px;
-        }
-        &:nth-child(4){
-            margin-left: 13px;
-            margin-top: 5px;
-        }
-         
+.login-form{
+  
+    .ant-form-item:last-of-type {
+        margin: 0;
     }
-    
-
     &__input {
-        transition: 0.5s !important;  
-        .ant-input-prefix {
-               
-                font-size: 0em + 22px / $defaultFontSize;
-                color: rgb(77, 13, 77);
-                opacity: 0.4;           
+        transition: 0.5s !important;
+        .ant-input-prefix{
+            font-size: 0em + 22px / $defaultFontSize;
+            color: rgb(77, 13, 77);
+            opacity: 0.4;   
         }
         input {
             font-size: 0em + 20px / $defaultFontSize;
             padding: 5px 20px 5px 10px !important;       
         }
-
     }
-   
-    
 
     &__button {
         width: 100%;

@@ -64,20 +64,17 @@ export default function RegisterForm() {
         }
     }
 
-    const register = e => {
+    //async: decimos que la funcion es de tipo asincrona
+    const register = async e => {
         const { email, password, repeatPassword, privacyPolicy } = formValid;
 
         const emailVal = input.email;
         const passwordVal = input.password;
         const repeatPasswordVal = input.repeatPassword;
         const privacyPolicyVal = input.privacyPolicy
-        if (!emailVal || !passwordVal || !repeatPasswordVal) {
+        if (!emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
             notification["error"]({
-                message: "Email y contraseñas obligatorias"
-            })
-        } else if (!privacyPolicyVal) {
-            notification["error"]({
-                message: "Ha de aceptar la política de privacidad"
+                message: "Email, contraseñas y política de privacidad obligatorio"
             })
         }
         else {
@@ -87,42 +84,52 @@ export default function RegisterForm() {
                 })
             } else {
                 // conectar con API y registrar usuario
-                const result = signUpApi(input);
+                // await: junto con ASYNC en la función ppal, le decimos que cuando llegue aquí que no continue hasta que termine esta función
+                const result = await signUpApi(input);
+                if (result.ok) {
+                    notification["success"]({
+                        message: result.message
+                    })
+                    resetForm();
+                } else {
+                    notification["error"]({
+                        message: result.message
+                    })
+                }
 
-
-                // Mensaje de éxito
-                notification["success"]({
-                    message: "Registro correcto"
-                })
-                console.log("Correcto...");
             }
         }
 
     }
 
+    const resetForm = () => {
+        const inputs = document.getElementsByTagName("input");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].classList.remove("success");
+            inputs[i].classList.remove("error");
+        }
+        setInput({
+            ...input,
+            name: "",
+            lastname: "",
+            email: "",
+            password: "",
+            repeatPassword: "",
+            privacyPolicy: false
+        })
+
+        setFormValid({
+            email: false,
+            password: false,
+            repeatPassword: false,
+            privacyPolicy: false
+        })
+    }
+
     const { Item } = Form;
     return (
         <Form className="register-form" onChange={changeForm}>
-            <Item>
-                <Input
-                    prefix={<User></User>}
-                    type="text"
-                    name="name"
-                    placeholder="Nombre"
-                    className="register-form__input"
-                    value={input.name}
-                />
-            </Item>
-            <Item>
-                <Input
-                    prefix={<User></User>}
-                    type="text"
-                    name="lastname"
-                    placeholder="Apellidos"
-                    className="register-form__input"
-                    value={input.lastname}
-                />
-            </Item>
+            
             <Item>
                 <Input
                     prefix={<Mail></Mail>}

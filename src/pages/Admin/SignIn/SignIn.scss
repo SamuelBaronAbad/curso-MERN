@@ -21,9 +21,9 @@
 
         &-tabs {
             background-color: $background-light;
-                display: flex;
-                    align-items: center;
-                    justify-items: center;
+            display: flex;
+            align-items: center;
+            justify-items: center;
             .ant-tabs {
                 width: 90vw;
                 @media (min-width: $media-breakpoint-up-lg) {
@@ -47,7 +47,7 @@
                 border-radius: 0px !important;
                 margin: 0 !important;
                 @media (min-width: $media-breakpoint-up-lg) {
-                    width: 288px;
+                    width: 220px;
                     font-size: 0em + 23px / $defaultFontSize;
                 }
                 &:hover {
@@ -57,7 +57,7 @@
                     content: none;
                 }
                 span {
-                  color: $primary-color;
+                    color: $primary-color;
                 }
             }
 
@@ -75,4 +75,20 @@
             }
         }
     }
+}
+.ant-input-affix-wrapper {
+    transition: 0.5s !important;
+  //  box-shadow: 3px 3px 2px purple;
+    box-shadow: none;
+    border: none;
+    &-focused{
+        
+        box-shadow: 2px 2px 6px purple;
+    }
+    
+    &:hover {
+        border-color: purple !important; 
+        box-shadow: 4px 4px 8px purple;
+    }
+   
 }
